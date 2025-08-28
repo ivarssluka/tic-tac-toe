@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="header">
+        <h1 class="title">TIC-TAC-TOE</h1>
+        <div id="currentMode">Mode: Player vs Computer</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-label"><strong>'X'</strong> Wins</div>
+          <div class="stat-value" id="playerWins">0</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label"><strong>'O'</strong> Wins</div>
+          <div class="stat-value" id="computerWins">0</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Draws</div>
+          <div class="stat-value" id="draws">0</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Total games</div>
+          <div class="stat-value" id="totalGames">0</div>
+        </div>
+      </div>
+
+      <div class="game-status" id="gameStatus">Your turn - click a cell!</div>
+
+      <div class="board-container">
+        <div class="board" id="gameBoard"></div>
+      </div>
+
+      <div class="controls">
+        <button class="btn" id="newGameBtn">New Game</button>
+        <button class="btn" id="resetStatsBtn">Reset Stats</button>
+        <button class="btn" id="toggleModeBtn">Switch to PvP</button>
+        <button class="btn" id="toggleStartBtn">Player Starts</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
