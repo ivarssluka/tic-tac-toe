@@ -2,14 +2,18 @@ let gameMode = "pvc";
 let currentPlayer = "X";
 let computerStartsFirst = false;
 let playerXStartsFirst = true;
+let difficulty = "medium";
 
 const toggleModeBtn = document.getElementById("toggleModeBtn");
 const currentModeDisplay = document.getElementById("currentMode");
+const difficultyBtn = document.getElementById("difficultyBtn");
 
 const gameBoard = document.getElementById("gameBoard");
 const gameStatus = document.getElementById("gameStatus");
-const playerWins = document.getElementById("playerWins");
-const computerWins = document.getElementById("computerWins");
+const player1Wins = document.getElementById("player1Wins");
+const player2Wins = document.getElementById("player2Wins");
+const player1Label = document.getElementById("player1Label");
+const player2Label = document.getElementById("player2Label");
 const draws = document.getElementById("draws");
 const totalGames = document.getElementById("totalGames");
 const newGameBtn = document.getElementById("newGameBtn");
@@ -56,13 +60,37 @@ function toggleGameMode() {
     gameMode = "pvp";
     toggleModeBtn.textContent = "Switch to PvC";
     currentModeDisplay.textContent = "Mode: Player vs Player";
+    difficultyBtn.style.display = "none";
   } else {
     gameMode = "pvc";
     toggleModeBtn.textContent = "Switch to PvP";
     currentModeDisplay.textContent = "Mode: Player vs Computer";
+    difficultyBtn.style.display = "inline-block";
   }
+
+  gameStatistics = {
+    player: 0,
+    computer: 0,
+    playerX: 0,
+    playerO: 0,
+    draws: 0,
+    totalGames: 0,
+  };
+
   updateToggleButtonText();
+  updateStatLabels();
+  updateStatistics();
   creategameBoard();
+}
+
+function updateStatLabels() {
+  if (gameMode === "pvp") {
+    player1Label.innerHTML = "<strong>Player 'X'</strong>";
+    player2Label.innerHTML = "<strong>Player 'O'</strong>";
+  } else {
+    player1Label.innerHTML = "<strong>Player</strong>";
+    player2Label.innerHTML = "<strong>Computer</strong>";
+  }
 }
 
 function togglePvPStarter() {
@@ -116,7 +144,22 @@ function updateToggleButtonText() {
   }
 }
 
+function toggleDifficulty() {
+  const difficulties = ["easy", "medium", "hard"];
+  const currentIndex = difficulties.indexOf(difficulty);
+  difficulty = difficulties[(currentIndex + 1) % 3];
+
+  difficultyBtn.textContent =
+    difficulty.charAt(0).toUpperCase() + difficulty.slice(1);
+
+  difficultyBtn.className = "btn";
+  if (difficulty === "easy") difficultyBtn.classList.add("difficulty-easy");
+  else if (difficulty === "hard")
+    difficultyBtn.classList.add("difficulty-hard");
+}
+
 toggleModeBtn.addEventListener("click", toggleGameMode);
+difficultyBtn.addEventListener("click", toggleDifficulty);
 
 function creategameBoard() {
   gameBoard.innerHTML = "";
@@ -211,6 +254,7 @@ function handlePlayerMove(click) {
       } else {
         gameStatus.textContent = "You win!";
         gameStatistics.player++;
+        gameStatus.classList.add("game-status-x-win");
       }
 
       if (winningCombo) {
@@ -250,63 +294,136 @@ function handlePlayerMove(click) {
   }, 1000);
 }
 
-function handleComputerMove() {
-  function findCriticalMove(targetPlayer, count) {
-    for (let combination of winningCombinations) {
-      let [a, b, c] = combination;
-      let positions = [
-        currentGameBoard[a],
-        currentGameBoard[b],
-        currentGameBoard[c],
-      ];
+function findCriticalMove(targetPlayer, count) {
+  for (let combination of winningCombinations) {
+    let [a, b, c] = combination;
+    let positions = [
+      currentGameBoard[a],
+      currentGameBoard[b],
+      currentGameBoard[c],
+    ];
 
-      let playerCount = positions.filter(
-        (position) => position === targetPlayer
-      ).length;
-      let emptyCount = positions.filter((position) => position === null).length;
+    let playerCount = positions.filter(
+      (position) => position === targetPlayer
+    ).length;
+    let emptyCount = positions.filter((position) => position === null).length;
 
-      if (playerCount === count && emptyCount === 1) {
-        for (let i = 0; i < 3; i++) {
-          if (currentGameBoard[combination[i]] === null) {
-            return combination[i];
-          }
+    if (playerCount === count && emptyCount === 1) {
+      for (let i = 0; i < 3; i++) {
+        if (currentGameBoard[combination[i]] === null) {
+          return combination[i];
         }
       }
     }
-    return null;
+  }
+  return null;
+}
+
+function minimax(board, depth, isMaximizing, maxPlayer = "O") {
+  const minPlayer = maxPlayer === "X" ? "O" : "X";
+  const winner = checkWinner(board);
+
+  if (winner === maxPlayer) return { score: 10 - depth };
+  if (winner === minPlayer) return { score: depth - 10 };
+  if (isBoardFull(board)) return { score: 0 };
+
+  const moves = [];
+  const emptyIndices = getEmptyIndices(board);
+
+  for (let i = 0; i < emptyIndices.length; i++) {
+    const move = {};
+    move.index = emptyIndices[i];
+
+    board[emptyIndices[i]] = isMaximizing ? maxPlayer : minPlayer;
+
+    const result = minimax(board, depth + 1, !isMaximizing, maxPlayer);
+    move.score = result.score;
+
+    board[emptyIndices[i]] = null;
+
+    moves.push(move);
   }
 
-  if (!isGameCurrentlyActive) return;
+  let bestMove;
+  if (isMaximizing) {
+    let bestScore = -Infinity;
+    for (let i = 0; i < moves.length; i++) {
+      if (moves[i].score > bestScore) {
+        bestScore = moves[i].score;
+        bestMove = i;
+      }
+    }
+  } else {
+    let bestScore = Infinity;
+    for (let i = 0; i < moves.length; i++) {
+      if (moves[i].score < bestScore) {
+        bestScore = moves[i].score;
+        bestMove = i;
+      }
+    }
+  }
 
-  const emptyIndices = currentGameBoard
+  return moves[bestMove];
+}
+
+function checkWinner(board) {
+  for (let combo of winningCombinations) {
+    const [a, b, c] = combo;
+    if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+      return board[a];
+    }
+  }
+  return null;
+}
+
+function isBoardFull(board) {
+  return board.every((cell) => cell !== null);
+}
+
+function getEmptyIndices(board) {
+  return board
     .map((value, index) => (value === null ? index : null))
     .filter((index) => index !== null);
+}
+
+function handleComputerMove() {
+  if (!isGameCurrentlyActive) return;
+
+  const emptyIndices = getEmptyIndices(currentGameBoard);
   if (emptyIndices.length === 0) return;
 
   let moveIndex = null;
 
-  moveIndex = findCriticalMove("O", 2);
+  if (difficulty === "easy") {
+    moveIndex = emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
+  } else if (difficulty === "medium") {
+    moveIndex = findCriticalMove("O", 2);
 
-  if (moveIndex === null) {
-    moveIndex = findCriticalMove("X", 2);
-  }
+    if (moveIndex === null) {
+      moveIndex = findCriticalMove("X", 2);
+    }
 
-  if (moveIndex === null) {
-    const center = 4;
-    const corners = [0, 2, 6, 8];
-    const sides = [1, 3, 5, 7];
+    if (moveIndex === null) {
+      const center = 4;
+      const corners = [0, 2, 6, 8];
+      const sides = [1, 3, 5, 7];
 
-    if (currentGameBoard[center] === null) {
-      moveIndex = center;
-    } else {
-      const freeCorners = corners.filter((i) => currentGameBoard[i] === null);
-      if (freeCorners.length > 0) {
-        moveIndex = freeCorners[Math.floor(Math.random() * freeCorners.length)];
+      if (currentGameBoard[center] === null) {
+        moveIndex = center;
       } else {
-        const freeSides = sides.filter((i) => currentGameBoard[i] === null);
-        moveIndex = freeSides[Math.floor(Math.random() * freeSides.length)];
+        const freeCorners = corners.filter((i) => currentGameBoard[i] === null);
+        if (freeCorners.length > 0) {
+          moveIndex =
+            freeCorners[Math.floor(Math.random() * freeCorners.length)];
+        } else {
+          const freeSides = sides.filter((i) => currentGameBoard[i] === null);
+          moveIndex = freeSides[Math.floor(Math.random() * freeSides.length)];
+        }
       }
     }
+  } else if (difficulty === "hard") {
+    const result = minimax(currentGameBoard, 0, true, "O");
+    moveIndex = result.index;
   }
 
   currentGameBoard[moveIndex] = "O";
@@ -369,17 +486,15 @@ function isGameOver() {
 
 function updateStatistics() {
   if (gameMode === "pvp") {
-    playerWins.textContent = gameStatistics.playerX;
-    computerWins.textContent = gameStatistics.playerO;
+    player1Wins.textContent = gameStatistics.playerX;
+    player2Wins.textContent = gameStatistics.playerO;
   } else {
-    playerWins.textContent = gameStatistics.player;
-    computerWins.textContent = gameStatistics.computer;
+    player1Wins.textContent = gameStatistics.player;
+    player2Wins.textContent = gameStatistics.computer;
   }
   draws.textContent = gameStatistics.draws;
   totalGames.textContent = gameStatistics.totalGames;
 }
-
-updateStatistics();
 
 newGameBtn.addEventListener("click", creategameBoard);
 
@@ -401,4 +516,6 @@ if (toggleStartBtn) {
   toggleStartBtn.addEventListener("click", toggleStarter);
 }
 
+updateStatLabels();
+updateStatistics();
 creategameBoard();
