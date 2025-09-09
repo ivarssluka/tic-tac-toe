@@ -1,4 +1,6 @@
-<div aling="center"> # 🎮 Tic-Tac-Toe Game  
+<div align="center"> 
+
+# 🎮 Tic-Tac-Toe Game  
 
 A modern, cyberpunk-styled Tic-Tac-Toe game with multiple game modes and difficulty levels.  
 
@@ -12,11 +14,14 @@ A modern, cyberpunk-styled Tic-Tac-Toe game with multiple game modes and difficu
   <img src="https://img.shields.io/github/forks/ivarssluka/tic-tac-toe?style=social" alt="GitHub Forks"/>
 </a>  
 
+<br>
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)  
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)  
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)  
+<img src="https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white" alt="HTML5"/>  
+<img src="https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white" alt="CSS3"/>  
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black" alt="JavaScript"/>  
+
 </div>
+
 ---
 
 ## 🚀 Live Demo  
