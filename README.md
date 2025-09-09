@@ -4,9 +4,6 @@
 
 A modern, cyberpunk-styled Tic-Tac-Toe game with multiple game modes and difficulty levels.  
 
-<a href="https://dice.infy.uk/" target="_blank">
-  <img src="https://img.shields.io/badge/Play%20Now-Live%20Demo-brightgreen?style=for-the-badge" alt="Play Demo"/>
-</a>
 <a href="https://github.com/ivarssluka/tic-tac-toe/stargazers" target="_blank">
   <img src="https://img.shields.io/github/stars/ivarssluka/tic-tac-toe?style=social" alt="GitHub Stars"/>
 </a>
@@ -25,9 +22,13 @@ A modern, cyberpunk-styled Tic-Tac-Toe game with multiple game modes and difficu
 ## 🚀 Live Demo  
 
 <a href="https://dice.infy.uk/" target="_blank">
+  <img src="https://img.shields.io/badge/Play%20Now-Live%20Demo-brightgreen?style=for-the-badge" alt="Play Demo"/>
+</a>
+<br>
+<a href="https://dice.infy.uk/" target="_blank">
   <img src="image.png" alt="Tic Tac Toe Screenshot" width="400"/>
 </a>  
-
+<br>
 ✨ <a href="https://dice.infy.uk/" target="_blank">Play the game here!</a>  
 
 ---
