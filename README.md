@@ -33,9 +33,8 @@ A modern, cyberpunk-styled Tic-Tac-Toe game with multiple game modes and difficu
 </div>
 ---
 
-<div align="center"> 
 ## ✨ Features  
-</div>
+
 * 🎯 Two game modes: **Player vs Computer** and **Player vs Player**  
 * 🎮 Three difficulty levels: **Easy, Medium, Hard**  
 * 📊 Statistics tracking for wins, losses, and draws  
@@ -44,9 +43,8 @@ A modern, cyberpunk-styled Tic-Tac-Toe game with multiple game modes and difficu
 * 🔄 Option to choose who starts first  
 
 ---
-<div align="center"> 
+
 ## 🕹️ How to Play  
-</div>
 
 <details>
   <summary>Click to expand 📖</summary>
@@ -62,26 +60,24 @@ A modern, cyberpunk-styled Tic-Tac-Toe game with multiple game modes and difficu
 
 ---
 
-<div align="center"> 
 ## 🧠 Difficulty Levels  
-</div>
 
 * **Easy** → Computer makes random moves  
 * **Medium** → Computer makes smart moves ~70% of the time, random ~30%  
 * **Hard** → Computer always plays optimally (blocking, winning, center/corner preference)  
 
 ---
-<div align="center"> 
+
 ## 🛠️ Technologies Used  
-</div>
+
 * **HTML5**  
 * **CSS3**
 * **JavaScript**  
 
 ---
-<div align="center"> 
+
 ## 📂 File Structure  
-</div>
+
 ```
 tic-tac-toe/
 ├── index.html   # Main HTML file
@@ -90,18 +86,18 @@ tic-tac-toe/
 └── README.md    # Project documentation
 ```
 ---
-<div align="center"> 
+
 ## ⚡ Roadmap  
-</div>
+
 - [x] Player vs Player mode  
 - [x] Player vs Computer mode  
 - [x] Difficulty levels  
 - [ ] Add online multiplayer  
 
 ---
-<div align="center"> 
+
 ## 🌐 Browser Compatibility  
-</div>
+
 This game works on all modern browsers:  
 
 * Chrome (recommended)  
@@ -110,9 +106,9 @@ This game works on all modern browsers:
 * Edge  
 
 ---
-<div align="center"> 
+
 ## 🤝 Contributing  
-</div>
+
 Contributions are welcome! 🎉  
 
 1. Fork the project  
@@ -122,19 +118,18 @@ Contributions are welcome! 🎉
 5. Open a Pull Request  
 
 ---
-<div align="center"> 
+
 ## 🙏 Acknowledgments  
-</div>
+
 * Inspired by classic Tic-Tac-Toe games  
 * Design inspired by **cyberpunk & retro-futuristic aesthetics**  
 
 ---
-<div align="center"> 
+
 ## 📬 Support  
-</div>
+
 If you have questions, open an issue on GitHub or contact me at **[slukaivars@gmail.com](mailto:slukaivars@gmail.com)**.  
 
 ---
-<div align="center"> 
+
 ✨ Enjoy the game and may the best player win! ✨  
-</div>
