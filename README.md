@@ -28,8 +28,8 @@ A modern, cyberpunk-styled Tic-Tac-Toe game with multiple game modes and difficu
 <a href="https://dice.infy.uk/" target="_blank">
   <img src="image.png" alt="Tic Tac Toe Screenshot" width="400"/>
 </a>  
-✨ <a href="https://dice.infy.uk/" target="_blank">Play the game here!</a>  
 <br>
+✨ <a href="https://dice.infy.uk/" target="_blank">Play the game here!</a>  
 
 ---
 </div>
