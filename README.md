@@ -84,10 +84,6 @@ Contributions are welcome! 🎉
 4. Push to your branch (`git push origin feature/YourFeature`)
 5. Open a Pull Request
 
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
 ## Acknowledgments
 
 * Inspired by classic Tic-Tac-Toe games
@@ -95,7 +91,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## Support
 
-If you have questions, open an issue on GitHub or contact me at **\[[your-email@example.com](mailto:your-email@example.com)]**.
+If you have questions, open an issue on GitHub or contact me at **\[[slukaivars@gmail.com](mailto:slukaivars@gmail.com)]**.
 
 ---
 
