@@ -2,9 +2,15 @@
 
 A modern, cyberpunk-styled Tic-Tac-Toe game with multiple game modes and difficulty levels.  
 
-[![Play Demo](https://img.shields.io/badge/Play%20Now-Live%20Demo-brightgreen?style=for-the-badge)](https://dice.infy.uk/){:target="_blank"}  
-[![GitHub stars](https://img.shields.io/github/stars/ivarssluka/tic-tac-toe?style=social)](https://github.com/ivarssluka/tic-tac-toe/stargazers){:target="_blank"}  
-[![GitHub forks](https://img.shields.io/github/forks/ivarssluka/tic-tac-toe?style=social)](https://github.com/ivarssluka/tic-tac-toe/network/members){:target="_blank"}  
+<a href="https://dice.infy.uk/" target="_blank">
+  <img src="https://img.shields.io/badge/Play%20Now-Live%20Demo-brightgreen?style=for-the-badge" alt="Play Demo"/>
+</a>
+<a href="https://github.com/ivarssluka/tic-tac-toe/stargazers" target="_blank">
+  <img src="https://img.shields.io/github/stars/ivarssluka/tic-tac-toe?style=social" alt="GitHub Stars"/>
+</a>
+<a href="https://github.com/ivarssluka/tic-tac-toe/network/members" target="_blank">
+  <img src="https://img.shields.io/github/forks/ivarssluka/tic-tac-toe?style=social" alt="GitHub Forks"/>
+</a>  
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)  
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)  
@@ -60,12 +66,12 @@ A modern, cyberpunk-styled Tic-Tac-Toe game with multiple game modes and difficu
 ## 🛠️ Technologies Used  
 
 * **HTML5**  
-* **CSS3** (grid layout, animations, glowing effects)  
-* **JavaScript (ES6)**  
+* **CSS3**
+* **JavaScript**  
 
 ---
 
-## File Structure
+## 📂 File Structure  
 
 ```
 tic-tac-toe/
