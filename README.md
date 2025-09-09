@@ -9,6 +9,7 @@ A modern, cyberpunk-styled Tic-Tac-Toe game with multiple game modes and difficu
 
 ## Live Demo
 
+![tic-tac-toe](image.png)
 🎮 [Play the game here!](https://dice.infy.uk/)
 
 ## Features
