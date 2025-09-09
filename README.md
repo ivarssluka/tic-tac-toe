@@ -11,9 +11,6 @@ A modern, cyberpunk-styled Tic-Tac-Toe game with multiple game modes and difficu
 
 🎮 [Play the game here!](https://dice.infy.uk/)
 
-> 💡 If you’d like to host this directly on GitHub, you can enable **GitHub Pages** in your repo settings and choose the `main` branch. The game will then be available at:
-> `https://ivarssluka.github.io/tic-tac-toe/`
-
 ## Features
 
 * 🎯 Two game modes: **Player vs Computer** and **Player vs Player**
